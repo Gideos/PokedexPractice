@@ -1,0 +1,22 @@
+<section class="w-[80%] mx-auto ">
+
+  <section class="mt-5 flex justify-center flex-wrap gap-2">
+
+
+    @for (type of pokemonTypes; track type) {
+
+      <button (click)="pokemonType.set(type)" [class.font-bold]="pokemonType() === type" [class.btn-outline]="pokemonType() === type" [class]="`font-bold btn btn-outline ${this.pokemonService.typeColors[type]}`" >{{type | titlecase}}</button>
+
+    }
+
+  </section>
+
+  <app-pokemon-list
+    [pokemonType]="pokemonType()"
+    [pokemonList]="pokemonResource.value() ?? []"
+    [isLoading]="pokemonResource.isLoading()"
+    [pokemonError]="pokemonResource.error()"
+    [pokemonEmpty]="pokemonResource.value()?.length === 0"
+  />
+
+</section>

@@ -1,0 +1,26 @@
+<div class="w-40 rounded-2xl bg-base-200">
+
+  <p class="relative left-4 top-2 badge badge-secondary text-base-200">{{pokemon().id}}</p>
+
+  <div class="flex flex-col items-center justify-center">
+
+
+    <img class="max-w-[100%] w-[96px] aspect-square" [src]="pokemon().sprites.front_default" alt="">
+
+    <h1 class="text-xl font-bold">
+      {{pokemon().name | titlecase}}
+    </h1>
+
+
+    <div class="flex gap-2 mb-2">
+
+      @for (tipo of pokemon().types; track tipo.slot;) {
+      <p  [class]="`text-sm badge text-base-100 ${this.PokemonService.typeColors[tipo.type.name]}`">{{tipo.type.name | titlecase}}</p>
+      }
+
+    </div>
+
+
+  </div>
+
+</div>
